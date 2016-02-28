@@ -1,0 +1,21 @@
+version: '2'
+services:
+    dbdata:
+        image: postgres:9.5
+        command: "true"
+
+    db:
+        image: postgres:9.5
+        environment:
+            POSTGRES_USER: django
+            POSTRES_PASSWORD: django
+        volumes_from:
+            - dbdata
+    django:
+        build: ./backend
+        volumes:
+            - ./backend:/src
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db

@@ -1,0 +1,5 @@
+# postgres database adapater
+psycopg2==2.6.1
+
+# django framework itself
+Django==1.9.2
