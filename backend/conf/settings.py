@@ -25,6 +25,8 @@ SECRET_KEY = '^h85uo#*&q+5r=a1_l8i_&t$^$(sgsz-3*ijq8%22ayrbapxyk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+WEBPACK_DEV_SERVER = True
+
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'apps.home'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -50,12 +54,12 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/app/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -63,12 +67,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.home.context_processors.static_resources'
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'project.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database
@@ -123,3 +128,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'

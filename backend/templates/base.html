@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <base href="/">
+    <title>{% block "title" %}My application{% endblock %}</title>
+    {% if not WEBPACK_DEV_SERVER %}
+        <link rel="stylesheet" href="{% static static_assets.css %}">
+    {% endif %}
+</head>
+<body>
+    {% block "content" %}{% endblock %}
+
+    {% if WEBPACK_DEV_SERVER %}
+        <script src="http://localhost:3000/static/bundle.js"></script>
+    {% else %}
+        <script src="{% static static_assets.js %}"></script>
+    {% endif %}
+</body>
+</html>

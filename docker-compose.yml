@@ -11,11 +11,24 @@ services:
             POSTRES_PASSWORD: django
         volumes_from:
             - dbdata
+    frontend:
+        image: node:5.7
+        working_dir: /frontend
+        command: bash -c "./install.sh; npm run-script dev-server"
+        volumes:
+            - ./frontend:/frontend
+        ports:
+            - "3000:3000"
+            - "35729:35729"
+
     django:
         build: ./backend
         volumes:
-            - ./backend:/src
+            - ./backend:/app
+            - ./frontend/dist:/static
+        command: bash -c "./install.sh; python3 manage.py migrate; python3 manage.py runserver 0.0.0.0:8000"
         ports:
             - "8000:8000"
         depends_on:
             - db
+            - frontend
