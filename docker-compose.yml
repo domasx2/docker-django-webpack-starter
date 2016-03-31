@@ -19,8 +19,6 @@ services:
             - ./frontend:/frontend
         ports:
             - "3000:3000"
-            - "35729:35729"
-
     django:
         build: ./backend
         volumes:
