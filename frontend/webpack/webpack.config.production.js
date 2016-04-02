@@ -18,7 +18,7 @@ export default {
         loaders: base_config.module.loaders.map(function(conf) {
             return {
                 ...conf,
-                loader: conf.loader.includes('style!') ? ExtractTextPlugin.extract(...conf.loader.split('!')) : conf.loader
+                loader: conf.loader.includes('style!') ? ExtractTextPlugin.extract('style', conf.loader.replace('style!', '')) : conf.loader
             }
         })
     },
