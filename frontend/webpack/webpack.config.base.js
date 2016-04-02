@@ -24,7 +24,7 @@ export default {
                 loader: 'style!css!stylus'
             },
             {
-                test: /\.(mp4|webm|jpeg|jpg|ico|png|gif|ttf|otf)$/,
+                test: /\.(mp4|webm|mp3|ogg|wav|jpeg|jpg|bmp|ico|png|gif|ttf|otf|woff|eot)$/,
                 loader: 'file?name=[path][name].[ext]?[hash]'
             }
         ]

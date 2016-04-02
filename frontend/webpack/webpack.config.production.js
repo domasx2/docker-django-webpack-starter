@@ -14,11 +14,11 @@ export default {
     module: {
         ...base_config.module,
 
-        //wrap style loaders with extract plugin
+        //wrap style loaders with extract text plugin
         loaders: base_config.module.loaders.map(function(conf) {
             return {
                 ...conf,
-                loader: conf.loader.includes('style!') ? ExtractTextPlugin.extract('style', conf.loader.replace('style!', '')) : conf.loader
+                loader: conf.loader && conf.loader.includes('style!') ? ExtractTextPlugin.extract('style', conf.loader.replace('style!', '')) : conf.loader
             }
         })
     },
