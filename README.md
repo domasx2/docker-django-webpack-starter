@@ -56,6 +56,8 @@ backend/requirements.txt      - python dependencies
 
 `./bin/pipinstall.sh [package-name]` - install python3 package and save it to requirements.txt. `./bin/pipinstall.sh djangorestframework`
 
+`./bin/build_frontend.sh`  - build frontend for prod to frontend/dist. 
+
 ## installing dependencies
 
 ### frontend

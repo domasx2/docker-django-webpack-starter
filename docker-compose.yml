@@ -11,6 +11,8 @@ services:
             POSTRES_PASSWORD: django
         volumes_from:
             - dbdata
+        ports:
+            - "9432:5432"
     frontend:
         image: node:5.7
         working_dir: /frontend

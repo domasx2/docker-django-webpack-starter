@@ -3,7 +3,4 @@ __pycache__
 *.pyc
 node_modules
 pipcache
-frontend/dist/*.js
-frontend/dist/*.css
-frontend/dist/*.map
-frontend/dist/assets.json
+frontend/dist/*
