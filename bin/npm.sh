@@ -1,4 +1,2 @@
 #!/bin/bash
-
-export DOCKER_CONFIG=${DOCKER_CONFIG:-docker-compose.yml}
-docker-compose -f $DOCKER_CONFIG run --rm frontend npm $@
+docker-compose -f docker-compose.yml run --rm frontend npm $@
