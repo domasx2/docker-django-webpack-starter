@@ -6,7 +6,8 @@ export default {
     ],
     devtool: 'source-map',
     output: {
-        path: '/frontend/dist/'
+        path: '/frontend/dist/',
+        publicPath: '/static/',
     },
     module: {
         loaders: [

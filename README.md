@@ -4,12 +4,6 @@ This is a starter project for a django app with webpack built frontend that uses
 It's assembled to be fast, use latest & best practices, and be simple to understand & work with.  
 Docker and docker-compose is all you need to develop, build & deploy!
 
-## requirements
-Install docker & docker-compose:  
-https://www.docker.com/  
-https://docs.docker.com/compose/
-
-
 ## stack
 python 3.5  
 node 5.7  
@@ -18,7 +12,14 @@ Django
 Webpack  
 Stylus  
 
-## start developing
+
+## install
+Just get latest docker & docker-compose:  
+https://www.docker.com/  
+https://docs.docker.com/compose/
+
+
+## run
 fork/download this repo and run
 ```sh
 ./bin/develop.sh
@@ -58,6 +59,14 @@ backend/requirements.txt      - python dependencies
 
 `./bin/build_frontend.sh`  - build frontend for prod to frontend/dist. 
 
+`./bin/build_production.sh` - build production containers  
+
+`./bin/deploy.sh` - rebuild production images, start
+
+## run production mode
+
+`./bin/deploy.sh` will build & (re)start dockerzied app in production mode using gunicorn app server & nginx to proxypass & serve static files.
+
 ## installing dependencies
 
 ### frontend
@@ -75,9 +84,5 @@ PIP is used for python deps. To install a package, run:
 Which will install new python dep and add an entry to requirements.txt.
 
 ## tests
-
-TODO
-
-## deploy
 
 TODO

@@ -16,7 +16,7 @@ services:
     frontend:
         image: node:5.7
         working_dir: /frontend
-        command: bash -c "./install.sh && npm run-script dev-server"
+        command: npm run-script develop
         volumes:
             - ./frontend:/frontend
         ports:
@@ -25,8 +25,9 @@ services:
         build: ./backend
         volumes:
             - ./backend:/app
+            - ./backend/media:/media
             - ./frontend/dist:/static
-        command: bash -c "./install.sh && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+        command: ./bin/develop.sh
         ports:
             - "8000:8000"
         depends_on:

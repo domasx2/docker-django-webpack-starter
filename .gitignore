@@ -4,3 +4,4 @@ __pycache__
 node_modules
 pipcache
 frontend/dist/*
+nginx/static/*

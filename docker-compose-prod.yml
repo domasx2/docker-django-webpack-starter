@@ -3,7 +3,6 @@ services:
     dbdata:
         image: postgres:9.5
         command: "true"
-
     db:
         image: postgres:9.5
         environment:
@@ -11,38 +10,29 @@ services:
             POSTRES_PASSWORD: django
         volumes_from:
             - dbdata
-    djangoprod:
-        build: ./backend
         volumes:
-            - ./backend:/app
-            - ./prodconf/gunicorn.conf.py:/etc/gunicorn/gunicorn.conf.py:ro
-            - ./logs/gunicorn:/tmp/logs/gunicorn
-            - ./logs/app:/tmp/logs/app
-        command: bash -c "./install.sh; python3 manage.py migrate; gunicorn -c /etc/gunicorn/gunicorn.conf.py wsgi:application"
-        ports:
-            - "8000:8000"
-        depends_on:
-            - db
-            
+            - "./logs/postgres:/var/log/postgresql"
+    djangoprod:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile-production
         environment:
             DJANGO_SETTINGS_MODULE: conf.settings_prod
-            NUM_WORKERS: 4
+        volumes:
+            - "./logs/app:/tmp/logs/app"
+            - "./logs/gunicorn:/tmp/logs/gunicorn"
+        depends_on:
+            - db
     nginxprod:
-        image: nginx
-        links:
+        build:
+            context: ./
+            dockerfile: ./nginx/Dockerfile
+        depends_on:
             - djangoprod
         volumes: 
-            - "./frontend/dist:/static:ro"
-            - "./prodconf/ssl:/etc/nginx/ssl:ro"
-            - "./logs/nginx:/tmp/logs"
             - "./backend/media:/media"
-    # COMMENT LINE BELOW IF CONFIGURING SSL ON INCLUDED NGINX
-            - "./prodconf/nginx.conf:/etc/nginx/nginx.conf:ro"
-    # UNCOMMENT LINE BELOW IF CONFIGURING SSL ON INCLUDED NGINX
-    #       - "conf/nginx_ssl.conf:/etc/nginx/nginx.conf:ro"
-
+            - "./logs/nginx:/tmp/logs"
         ports:
             - "80:80"
-    # UNCOMMENT BELOW IF USING SSL
-    #        - "443:443"
+            - "443:443"
 
