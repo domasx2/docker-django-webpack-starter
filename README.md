@@ -25,7 +25,7 @@ fork/download this repo and run
 ./bin/develop.sh
 ```
 It will setup docker containers, download frontend & backend deps, start django dev server and webpack dev server.  
-Once everything is finished, open http://localhost:8000
+Once everything is finished, open [http://localhost:8000](http://localhost:8000)
 
 ## layout
 
