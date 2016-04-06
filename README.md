@@ -42,8 +42,17 @@ frontend/src/style/index.styl - stylesheet entry point. include other styl files
 backend/                      - backend stuff
 backend/apps/                 - django apps
 backend/conf/                 - django settings files
+backend/conf/settings.py      - default config
+backend/conf/settings_prod.py - production config
 backend/templates/            - django global templates
 backend/requirements.txt      - python dependencies
+backend/gunicorn.conf.py      - gunicorn conf for production
+
+logs/                         - in prod mode logs go here
+nginx/                        - nginx stuff for prod mdoe
+nginx/ssl/                    - put key & cert here if you use ssl
+nginx/nginx_nossl.conf        - nginx conf if no ssl is used
+nginx/nginx_ssl.conf          - nginx conf for deploy with ssl
 ```
 
 ## utility commands

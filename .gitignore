@@ -5,3 +5,4 @@ node_modules
 pipcache
 frontend/dist/*
 nginx/static/*
+*.log

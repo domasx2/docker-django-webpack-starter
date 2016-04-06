@@ -1,2 +1,0 @@
-2016/04/06 18:19:05 [error] 8#8: *17 open() "/static/hamster.jph" failed (2: No such file or directory), client: 172.20.0.1, server: _, request: "GET /static/hamster.jph HTTP/1.1", host: "localhost"
-2016/04/06 18:19:09 [error] 8#8: *17 open() "/static/hamster.jpg" failed (2: No such file or directory), client: 172.20.0.1, server: _, request: "GET /static/hamster.jpg HTTP/1.1", host: "localhost"
