@@ -6,6 +6,7 @@ export default {
     debug: true,
     output: {
         ...base_config.output,
+        publicPath: 'http://localhost:3000' + base_config.output.publicPath,
         filename: 'bundle.js'
     },
     entry: [

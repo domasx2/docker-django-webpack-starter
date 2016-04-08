@@ -8,7 +8,7 @@
     "npminstall": "npm i -q",
     "develop": "npm run npminstall && npm run dev-server",
     "build": "babel-node ./node_modules/webpack/bin/webpack --config webpack/webpack.config.production.js --progress --profile --color",
-    "build-prod": "./install.sh && npm run cleandist && npm run build",
+    "build-prod": "npm run npminstall && npm run cleandist && npm run build",
     "cleandist": "rm -rf /dist/*"
   },
   "author": "",
