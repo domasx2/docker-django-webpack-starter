@@ -1,5 +1,6 @@
 #!/bin/bash
 
 #run npm command. use this to install new packages to dev
+source bin/env.sh
 
-docker-compose run --rm frontend npm $@
+dcdev run --rm frontend npm $@

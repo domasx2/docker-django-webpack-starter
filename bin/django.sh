@@ -1,5 +1,6 @@
 #!/bin/bash
 
 #run django management command in development mode
+source bin/env.sh
 
-docker-compose run --rm django python3 manage.py $@
+dcdev run --rm django python3 manage.py $@

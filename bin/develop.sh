@@ -2,6 +2,8 @@
 
 #start development server on :8000
 
-docker-compose build
+source bin/env.sh
+
+dcdev build
 ./bin/init_db.sh
-docker-compose up
+dcdev up
