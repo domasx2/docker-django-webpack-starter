@@ -1,0 +1,26 @@
+version: '2'
+services:
+    db:
+        ports:
+            - "9432:5432" 
+    frontend:
+        image: node:5.10
+        working_dir: /frontend
+        command: npm run-script develop
+        volumes:
+            - ./frontend:/frontend
+        ports:
+            - "3000:3000"
+    django:
+        build: ./backend
+        volumes:
+            - ./backend:/app
+            - ./backend/media:/media
+            - ./frontend/dist:/static
+        command: ./bin/develop.sh
+        ports:
+            - "8000:8000"
+        environment:
+            DJANGO_SETTINGS_MODULE: conf.settings
+        depends_on:
+            - db

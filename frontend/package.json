@@ -8,10 +8,10 @@
     "npminstall": "npm i -q",
     "develop": "npm run npminstall && npm run dev-server",
     "build": "babel-node ./node_modules/webpack/bin/webpack --config webpack/webpack.config.production.js --progress --profile --color",
-    "build-prod": "npm run npminstall && npm run cleandist && npm run build",
-    "cleandist": "rm -rf /dist/*"
+    "cleandist": "rm -rf /dist/*",
+    "build-prod": "npm run npminstall && npm run cleandist && npm run build"
   },
-  "author": "",
+  "author": "domasx2@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "assets-webpack-plugin": "^3.4.0",

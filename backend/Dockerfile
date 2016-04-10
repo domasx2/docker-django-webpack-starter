@@ -5,9 +5,9 @@ ENV PYTHONUNBUFFERED 1
 RUN pip3 install --upgrade pip
 RUN pip3 install wheel
 
-VOLUME /app
+RUN mkdir -p /app/static /tmp/logs/app
 
-RUN mkdir static
+VOLUME /app
 VOLUME /static
 
 WORKDIR /app

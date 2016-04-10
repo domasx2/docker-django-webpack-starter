@@ -1,34 +1,25 @@
 version: '2'
 services:
-    dbdata:
-        image: postgres:9.5
-        command: "true"
     db:
-        image: postgres:9.5
-        environment:
-            POSTGRES_USER: django
-            POSTRES_PASSWORD: django
-        volumes_from:
-            - dbdata
         volumes:
             - "./logs/postgres:/var/log/postgresql"
-    djangoprod:
+    django:
         build:
             context: ./backend
             dockerfile: Dockerfile-production
         environment:
-            DJANGO_SETTINGS_MODULE: conf.settings_prod
+            DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE}
         volumes:
             - "./logs/app:/tmp/logs/app"
             - "./logs/gunicorn:/tmp/logs/gunicorn"
         depends_on:
             - db
-    nginxprod:
+    nginx:
         build:
             context: ./
             dockerfile: ./nginx/Dockerfile
         depends_on:
-            - djangoprod
+            - django
         volumes: 
             - "./backend/media:/media"
             - "./logs/nginx:/tmp/logs"

@@ -1,6 +1,8 @@
 #!/bin/bash
 # start production server
 
-DOCKER_CONFIG=${DOCKER_CONFIG:-docker-compose-prod.yml}
-docker-compose -f $DOCKER_CONFIG up -d
+DOCKER_CONFIG_PROD=${DOCKER_CONFIG_PROD:-docker-compose.production.yml}
+export DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-conf.settings_prod}
+
+docker-compose -f docker-compose.yml -f $DOCKER_CONFIG_PROD up -d
 echo "started"

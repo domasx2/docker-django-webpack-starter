@@ -1,4 +1,5 @@
 #!/bin/bash
 
-export DOCKER_CONFIG=${DOCKER_CONFIG:-docker-compose.yml}
-docker-compose -f $DOCKER_CONFIG run --rm django ./bin/install_package.sh $@
+#install new pytho ndep via pip, add it to requirements.txt
+
+docker-compose run --rm django ./bin/install_package.sh $@
