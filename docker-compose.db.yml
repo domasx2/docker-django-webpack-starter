@@ -1,0 +1,8 @@
+version: '2'
+services:
+    dbclient:
+        image: postgres:9.5
+        depends_on:
+            - db
+        volumes:
+        - "./backups:/backups"

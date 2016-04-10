@@ -3,17 +3,15 @@
 #initialize database if it hasn't been initialized yet
 
 DOCKER_CONFIG_OVERRIDES=${DOCKER_CONFIG_OVERRIDES:-docker-compose.override.yml}
-DB_CONTAINER=db
-DBDATA_CONTAINER=dbdata
 
-if  [ $(docker-compose -f docker-compose.yml -f $DOCKER_CONFIG_OVERRIDES ps | grep $DBDATA_CONTAINER | wc -l) == 0 ]; then
-    echo "initializing $DB_CONTAINER"
-    docker-compose -f docker-compose.yml -f $DOCKER_CONFIG_OVERRIDES up -d $DB_CONTAINER 
-    DB_CONTAINER_ID=$(docker-compose -f docker-compose.yml -f $DOCKER_CONFIG_OVERRIDES ps -q $DB_CONTAINER)
+if  [ $(docker-compose -f docker-compose.yml -f $DOCKER_CONFIG_OVERRIDES ps | grep dbdata | wc -l) == 0 ]; then
+    echo "initializing database"
+    docker-compose -f docker-compose.yml -f $DOCKER_CONFIG_OVERRIDES up -d db
+    DB_CONTAINER_ID=$(docker-compose -f docker-compose.yml -f $DOCKER_CONFIG_OVERRIDES ps -q db)
     for i in {30..0}; do
         echo "waiting for postgres to finish initializing..."
         if [ $(docker logs $DB_CONTAINER_ID 2>&1 | grep "database system is ready to accept connections" | wc -l) == 1 ]; then
-            docker-compose -f docker-compose.yml -f $DOCKER_CONFIG_OVERRIDES stop $DB_CONTAINER
+            docker-compose -f docker-compose.yml -f $DOCKER_CONFIG_OVERRIDES stop db
             echo "db initialized"
             exit 0
         else
