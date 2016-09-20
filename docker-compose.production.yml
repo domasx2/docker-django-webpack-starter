@@ -12,6 +12,7 @@ services:
         volumes:
             - "./logs/app:/tmp/logs/app"
             - "./logs/gunicorn:/tmp/logs/gunicorn"
+            - "./backend/media:/media"
         depends_on:
             - db
     nginx:
