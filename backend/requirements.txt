@@ -6,3 +6,6 @@ Django==1.9.2
 
 #app server for prod
 gunicorn==19.4.5
+
+#selenium for e2e tests
+selenium==3.0.0b3

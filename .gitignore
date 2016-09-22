@@ -8,3 +8,4 @@ nginx/static/*
 nginx/ssl/*
 *.log
 backups/*.bak
+/backend/assets.json

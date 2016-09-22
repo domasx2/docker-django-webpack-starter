@@ -3,7 +3,6 @@ services:
     dbdata:
         image: postgres:9.5
         command: "true"
-
     db:
         image: postgres:9.5
         environment:

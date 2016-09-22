@@ -1,0 +1,23 @@
+version: '2'
+services:
+    django:
+        build: ./backend
+        volumes:
+            - ./backend:/app
+            - ./backend/media:/media
+            - ./frontend/dist:/static
+            - ./frontend/dist/assets.json:/app/assets.json
+        command: ./bin/test.sh
+        ports:
+            - "8082:8082"
+        environment:
+            DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_TEST}
+        network_mode: "service:selenium"
+        depends_on:
+            - db
+            - selenium
+
+    selenium:
+        image: selenium/standalone-chrome-debug:2.53.0
+        ports: 
+            - 5900:5900
