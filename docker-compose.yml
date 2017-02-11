@@ -1,12 +1,11 @@
-version: '2'
+version: '3'
+volumes:
+    data:
 services:
-    dbdata:
-        image: postgres:9.5
-        command: "true"
     db:
-        image: postgres:9.5
+        image: postgres:9.6
         environment:
             POSTGRES_USER: django
             POSTRES_PASSWORD: django
-        volumes_from:
-            - dbdata
+        volumes:
+            - data:/var/lib/postgresql/data

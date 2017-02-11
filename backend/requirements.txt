@@ -1,11 +1,11 @@
 # postgres database adapater
-psycopg2==2.6.1
+psycopg2==2.6.2
 
 # django framework itself
-Django==1.9.2
+Django==1.10.5
 
 #app server for prod
-gunicorn==19.4.5
+gunicorn==19.6.0
 
 #selenium for e2e tests
-selenium==3.0.0b3
+selenium==3.0.2
